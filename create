@@ -1,5 +1,13 @@
 #!/bin/bash
 project=$1
 
-mkdir -p "/home/git/repos/${project}"
-git -C "/home/git/repos/${project}" init --bare
+# do some sanity checking to help protect against things like
+# `create ../../../etc`
+if $(echo "${project}" | grep -P '[^a-zA-Z0-9_-]' > /dev/null)
+then
+    echo "only alpha, numeric, underscore, and hyphen is allowed"
+    exit 1
+fi
+
+mkdir -p "/home/git/repos/${project}.git"
+git -C "/home/git/repos/${project}.git" init --bare

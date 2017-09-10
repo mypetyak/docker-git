@@ -29,7 +29,7 @@ You can create a new repository over SSH:
 $ ssh -p 44444 git@localhost
 ...
 
-git> create myrepo.git
+git> create myrepo
 Initialized empty Git repository in /home/git/repos/myrepo.git/
 ```
 
