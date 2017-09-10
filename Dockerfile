@@ -18,5 +18,5 @@ EXPOSE 22
 COPY start.sh /start.sh
 
 RUN mkdir -p /home/git/git-shell-commands
-COPY start.sh /home/git/git-shell-commands/create
+COPY create /home/git/git-shell-commands/create
 CMD ["/start.sh"]

@@ -21,21 +21,22 @@ Finally, build the docker-git container and run it as a daemonized process, moun
 
 ```
 $ docker build . -t docker-git
-$ docker run --rm -d -p 44444:22 --mount source=git_pubkeys,destination=/home/git/.ssh,readonly -v git_repos:/home/git docker-git
+$ docker run --rm -d -p 44444:22 --mount source=git_pubkeys,destination=/home/git/.ssh,readonly -v git_repos:/home/git/repos docker-git
 ```
 
-For now, you'll need to manually enter the container to add a new repository:
-
+You can create a new repository over SSH:
 ```
-root@fabf5b5dd931:/# mkdir /home/git/myrepo.git
-root@fabf5b5dd931:/# git -C /home/git/myrepo.git init --bare
-root@fabf5b5dd931:/# chown -R git /home/git/myrepo.git
-```
+$ ssh -p 44444 git@localhost
+Enter passphrase for key '/Users/bunn/.ssh/id_rsa':
+Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.9.41-moby x86_64)
+...
 
-But I'd like to add a `~git/git-shell-commands` directory with repo creation and maintenance scripts.
+git> create myrepo.git
+Initialized empty Git repository in /home/git/repos/myrepo.git/
+```
 
 Then you can check out your new repo via:
 
 ```
-git clone ssh://git@localhost:44444/home/git/myrepo.git
+git clone ssh://git@localhost:44444/home/git/repos/myrepo.git
 ```

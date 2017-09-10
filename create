@@ -1,2 +1,5 @@
 #!/bin/bash
-# unimplemented
+project=$1
+
+mkdir -p "/home/git/repos/${project}"
+git -C "/home/git/repos/${project}" init --bare
