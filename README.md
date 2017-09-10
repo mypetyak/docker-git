@@ -27,8 +27,6 @@ $ docker run --rm -d -p 44444:22 --mount source=git_pubkeys,destination=/home/gi
 You can create a new repository over SSH:
 ```
 $ ssh -p 44444 git@localhost
-Enter passphrase for key '/Users/bunn/.ssh/id_rsa':
-Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.9.41-moby x86_64)
 ...
 
 git> create myrepo.git
